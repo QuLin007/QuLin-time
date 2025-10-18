@@ -1,0 +1,1 @@
+import React from 'react';export default function YearView({ t }) { return (<div className="max-w-lg mx-auto pb-28"><div className="glass-card p-4">年视图（占位） - 24 节气列表</div></div>);}

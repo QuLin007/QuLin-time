@@ -1,0 +1,1 @@
+import React from 'react';export default function MonthView({ t }) { return (<div className="max-w-lg mx-auto pb-28"><div className="glass-card p-4">月视图（占位） - 点击任意日期查看黄历</div></div>);}

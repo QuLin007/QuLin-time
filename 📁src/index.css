@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { --glass-bg: rgba(255,255,255,0.35); }
+body { font-family: 'SF Pro Display', 'PingFang SC', system-ui, -apple-system; background: linear-gradient(180deg,#e6f0ff 0%, #ffffff 100%); min-height:100vh;}
+.glass-card { background: var(--glass-bg); border:1px solid rgba(255,255,255,0.5); backdrop-filter: blur(14px); border-radius:14px; box-shadow: 0 6px 20px rgba(20,20,40,0.08);}

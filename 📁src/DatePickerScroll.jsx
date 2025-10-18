@@ -1,0 +1,1 @@
+import React from 'react';export default function DatePickerScroll({ value, onChange }) { const dateStr = value.toISOString().slice(0,10); function handleChange(e){ onChange(new Date(e.target.value)); } return (<input className="glass-card px-3 py-2" type="date" value={dateStr} onChange={handleChange} />);}
