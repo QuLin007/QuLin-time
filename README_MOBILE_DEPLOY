@@ -1,0 +1,58 @@
+# 时辰簿 | The Almanac — Vercel One-click Deploy (Mobile-friendly)
+
+此版本已针对 **Vercel 一键部署** 做好准备，包含：
+- `frontend/`：React + Vite + Tailwind 前端（生产构建输出到 `dist`）
+- `api/almanac.js`：Vercel Serverless Function（读取环境变量 `TIANAPI_KEY` 或 `JUHE_KEY`）
+- `vercel.json`：Vercel 构建与路由配置
+
+## 你可以只用手机完成的步骤（详细，按顺序）
+
+**前提：准备好 GitHub 账号与 Vercel 账号（可用手机注册，建议使用同一个邮箱）。**
+
+### A. 在手机上创建 GitHub 仓库并上传文件（最快的方法）
+1. 在手机 Safari 打开 https://github.com 并登录你的账号。
+2. 点击右上角「+」→「New repository」。
+   - Repository name: `the-almanac`
+   - Description: `时辰簿 | The Almanac - Vercel deploy`
+   - Public 或 Private（任选）
+   - 不要初始化 README（我们会上传全部文件）
+3. 创建成功后，打开仓库页面，点击「Add file」→「Upload files」。
+4. 在上传界面，点击「choose your files」，然后选择你提前下载到手机的 ZIP（如果你使用电脑请跳到下一节）。  
+   - 如果你无法上传 ZIP，建议直接在手机上使用 GitHub App 或逐文件上传（但 ZIP 上传更快）。
+5. 点击「Commit changes」开始上传并创建文件。
+
+> 提示：如果你在本条对话中下载了我准备的 zip（我会提供下载链接），你可以直接在手机下载这个 zip，然后在 GitHub 上传界面选择上传并解压（GitHub 会保留 zip 内容作为单个文件 — 若想解压上传，请使用电脑或 GitHub Desktop）。  
+> 更稳妥的方法：使用 GitHub 网站的“Upload files”逐个选择 `frontend/` 下的文件夹与 `api/`、`vercel.json` 上传（手机浏览器支持多文件选择）。
+
+### B. 在 Vercel 创建并部署（完全手机可操作）
+1. 打开 https://vercel.com 并用 GitHub 登录（点击「Continue with GitHub」）。
+2. 点击「New Project」→ 「Import Git Repository」。
+3. 选择你刚刚上传的 `the-almanac` 仓库，点击「Import」。
+4. 在 Import 设置页：
+   - Framework: **Other**（若自动识别为 React + Vite 也可）
+   - Build Command: `npm run build`
+   - Output Directory: `frontend/dist`
+5. 在 Environment Variables（环境变量）部分，添加：
+   - `ALMANAC_PROVIDER` = `tianapi`  （或 `juhe`）
+   - `TIANAPI_KEY` = 你的天行 API Key （如果使用天行）
+   - `JUHE_KEY` = 你的聚合 API Key （如果使用聚合）
+6. 点击「Deploy」开始部署。Vercel 会在几秒到数分钟内完成构建并提供一个域名（例如 `https://the-almanac-username.vercel.app`）。
+7. 部署成功后，点击生成的域名即可在手机 Safari 打开并验收页面。
+
+### C. 常见问题与排查（手机操作指南）
+- 如果构建失败，请进入项目的「Deployments」查看构建日志（Logs），常见错误：
+  - `TIANAPI_KEY` 未设置 → 在 Vercel Dashboard 的 Settings → Environment Variables 添加密钥并重新部署。
+  - 构建命令错误 → 确认 `frontend/package.json` 包含 `build` 脚本（已包含）。
+- 若你无法上传大量文件，替代方案：
+  - 我可以把项目打包成单个 `repository.zip` 并提供一个直接上传到 Vercel 的方式（使用 Vercel 的「Import Project」→ 「Upload」功能），但那通常仍需 GitHub。
+
+## 环境变量（需要在 Vercel 控制面板添加）
+- `ALMANAC_PROVIDER` = `tianapi`
+- `TIANAPI_KEY` = <你的天行Key>
+- `JUHE_KEY` = <你的聚合Key> (可选)
+
+## 后续我可以代为生成：
+- 一个用于直接在 GitHub Web 上传的 `repository.zip`（我已准备好，可以发给你），包含所有文件与目录结构。
+- 或者我可以把仓库直接创建并把文件提供为下载链接（你再上传到 GitHub）。
+
+如果你确认我把 Vercel-ready ZIP 发给你，现在我会把 `the-almanac-vercel.zip` 准备好供你下载（里面包含 `vercel.json`、`api/almanac.js`、`frontend/` 等），并且我会接着把**逐步手机截图式操作指导**发在下一条消息（包括每一步在手机 Safari 上点击的位置文字提示）。
